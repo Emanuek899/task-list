@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Editar tarea</title>
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+<body data-id="{{ task.id }}">
+	<h1>Edit task</h1>
+  <div class="col row">
+    <div class="col">
+      <h2>Task</h2>
+      <p>{{ task.nombre_tarea }}</p>
+    </div>
+    <div class="col">
+      <h2>Description</h2>
+      <p>{{ task.descripcion }}</p>
+    </div>
+  </div>
+  <form>
+    {% csrf_token %}
+    <div class="mb-3 col">
+      <div class="col">
+        <label for="task-name" class="form-label">Task name</label>
+        <div id="old-task-name"></div>
+        <input 
+          type="text"
+          class="form-control"
+          id="task-name"
+          aria-describedby="add-task"
+          name="task-name"
+          placeholder="Nombre">
+        <div id="old-task-desc"></div>
+        <input 
+          type="text"
+          class="form-control"
+          id="task-desc"
+          aria-describedby="add-task"
+          name="task-description"
+          placeholder="Description">
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary " id="updt-task-btn">Update</button>
+        <a href="http://127.0.0.1:8000">
+          <button type="button" class="btn btn-primary">Back</button>
+        </a>
+      </div>
+    </div>
+  </form>
+  <script type="module" src="{% static 'utils.js' %}"></script>
+  <script type="module" src="{% static 'editar_tareas.js' %}"></script>
+</body>
+</html>
